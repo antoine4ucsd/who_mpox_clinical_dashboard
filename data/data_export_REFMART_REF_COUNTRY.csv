@@ -1,0 +1,250 @@
+﻿GEO_M49_CODE,CODE_ISO_2,CODE_ISO_3,CODE_WHO,CODE_ISO_NUMERIC,NAME_SHORT_EN,NAME_FORMAL_EN,CAPITAL_CITY,ADJECTIVE_PEOPLE,GRP_WB_INCOME,GRP_WHO_REGION,WHO_LEGAL_STATUS,WHO_LEGAL_STATUS_TITLE,NAME_CHANGE,ISO_CHANGE,CAPITAL_CHANGE,STATISTICAL_CHANGE,NAME_SHORT_FR,NAME_FORMAL_FR
+004,AF,AFG,AFG,4,Afghanistan,the Islamic Republic of  Afghanistan,Kabul,Afghan,LIC,EMR,M,Member State,,,,,Afghanistan,République islamique d'Afghanistan
+008,AL,ALB,ALB,8,Albania,the Republic of Albania,Tirana,Albanian,UMC,EUR,M,Member State,,,,,Albanie,la République d'Albanie
+012,DZ,DZA,ALG,12,Algeria,the People’s Democratic Republic of Algeria,Algiers,Algerian,UMC,AFR,M,Member State,,,,,Algérie,la République algérienne démocratique et populaire
+016,AS,ASM,AMS,16,American Samoa,,,,HIC,WPR,T,Territory or Area,,,,,Samoa américaines,
+020,AD,AND,AND,20,Andorra,the Principality of Andorra,Andorra La Vella,Andorran,HIC,EUR,M,Member State,,,,,Andorre,la Principauté d'Andorre
+024,AO,AGO,ANG,24,Angola,the Republic of Angola,Luanda,Angolan,LMC,AFR,M,Member State,,,,,Angola,la République d'Angola
+028,AG,ATG,ANI,28,Antigua and Barbuda,Antigua and Barbuda,St John’s,of Antigua and Barbuda,HIC,AMR,M,Member State,"Previously listed as Antigua, DS:https://unstats.un.org",,,,Antigua-et-Barbuda,Antigua-et-Barbuda
+031,AZ,AZE,AZE,31,Azerbaijan,the Republic of Azerbaijan,Baku,Azerbaijani,UMC,EUR,M,Member State,,,,,Azerbaïdjan,la République d'Azerbaïdjan
+032,AR,ARG,ARG,32,Argentina,the Argentine Republic,Buenos Aires,Argentine,UMC,AMR,M,Member State,,,,,Argentine,la République argentine
+036,AU,AUS,AUS,36,Australia,Australia,Canberra,Australian,HIC,WPR,M,Member State,,,,,Australie,l'Australie
+040,AT,AUT,AUT,40,Austria,the Republic of Austria,Vienna,Austria,HIC,EUR,M,Member State,,,,,Autriche,la République d'Autriche
+044,BS,BHS,BAH,44,Bahamas,the Commonwealth of the Bahamas,Nassau,Bahamian,HIC,AMR,M,Member State,,,,,Bahamas,le Commonwealth des Bahamas
+048,BH,BHR,BAA,48,Bahrain,the Kingdom of Bahrain,Manama,Bahraini,HIC,EMR,M,Member State,,,,,Bahreïn,le Royaume de Bahreïn
+050,BD,BGD,BAN,50,Bangladesh,the People’s Republic of Bangladesh,Dhaka,"of Bangladesh, a Bangladeshi",LMC,SEAR,M,Member State,,,,,Bangladesh,la République populaire du Bangladesh
+051,AM,ARM,ARM,51,Armenia,the Republic of Armenia,Yerevan,Armenian,UMC,EUR,M,Member State,,,,,Arménie,la République d'Arménie
+052,BB,BRB,BAR,52,Barbados,Barbados,Bridgetown,Barbadian,HIC,AMR,M,Member State,,,,,Barbade,la Barbade
+056,BE,BEL,BEL,56,Belgium,the Kingdom of Belgium,Brussels,Belgian,HIC,EUR,M,Member State,,,,,Belgique,le Royaume de Belgique
+060,BM,BMU,BER,60,Bermuda,,,,HIC,AMR,T,Territory or Area,,,,,Bermudes (les),
+064,BT,BTN,BHU,64,Bhutan,the Kingdom of Bhutan,Thimphu,Bhutanese,LMC,SEAR,M,Member State,,,,,Bhoutan,le Royaume du Bhoutan
+068,BO,BOL,BOL,68,Bolivia (Plurinational State of),the Plurinational State of Bolivia,Sucre,Bolivian,LMC,AMR,M,Member State,Previously listed as Bolivia,,,,Bolivie (État plurinational de),État plurinational de Bolivie
+070,BA,BIH,BIH,70,Bosnia and Herzegovina,Bosnia and Herzegovina,Sarajevo,of Bosnia and Herzegovina,UMC,EUR,M,Member State,,,,Formerly part of the Socialist Federal Republic of Yugoslavia (numerical code 890),Bosnie-Herzégovine,la Bosnie-Herzégovine
+072,BW,BWA,BOT,72,Botswana,the Republic of Botswana,Gaborone,of Botswana,UMC,AFR,M,Member State,,,,,Botswana,la République du Botswana
+074,BV,BVT,BVT,74,Bouvet Island,,,,,,T,Territory or Area,,,,,Île Bouvet (l'),
+076,BR,BRA,BRA,76,Brazil,the Federative Republic of Brazil,Brasília,Brazilian,UMC,AMR,M,Member State,,,,,Brésil,la République fédérative du Brésil
+084,BZ,BLZ,BLZ,84,Belize,Belize,Belmopan,Belizean,UMC,AMR,M,Member State,,,,,Belize,le Belize
+086,IO,IOT,IOT,86,British Indian Ocean Territory,,,,,,T,Territory or Area,,,,,Indien (le Territoire britannique de l'Océan ),
+090,SB,SLB,SOL,90,Solomon Islands,Solomon Islands,Honiara,"of Solomon Islands, a Solomon Islander",LMC,WPR,M,Member State,,,,,Îles Salomon,les Îles Salomon
+092,VG,VGB,VIB,92,British Virgin Islands,,,,HIC,AMR,T,Territory or Area,,,,,Îles Vierges britanniques,
+096,BN,BRN,BRU,96,Brunei Darussalam,Brunei Darussalam,Bandar Seri Begawan,of Brunei Darussalam,HIC,WPR,M,Member State,Previously listed as Brunei,,,,Brunéi Darussalam,le Brunéi Darussalam
+100,BG,BGR,BUL,100,Bulgaria,the Republic of Bulgaria,Sofia,Bulgarian,HIC,EUR,M,Member State,,,,,Bulgarie,la République de Bulgarie
+104,MM,MMR,MMR,104,Myanmar,the Republic of the Union of Myanmar,Nay Pyi Taw,of Myanmar,LMC,SEAR,M,Member State,Previously listed as Burma,"BUR, until 1989",,,Myanmar,la République de l'Union du Myanmar
+108,BI,BDI,BUU,108,Burundi,the Republic of Burundi,Bujumbura,"of Burundi, Burundian",LIC,AFR,M,Member State,,,,,Burundi,la République du Burundi
+112,BY,BLR,BLR,112,Belarus,the Republic of Belarus,Minsk,Belarusian,UMC,EUR,M,Member State,"Previously listed as Byelorussian Soviet Socialist Republic, DS: https://unstats.un.org","BYS, until 1992-06-15",,,Bélarus,la République du Bélarus
+116,KH,KHM,CAM,116,Cambodia,the Kingdom of Cambodia,Phnom Penh,Cambodian,LMC,WPR,M,Member State,Previously listed as Democratic Kampuchea,,,,Cambodge,le Royaume du Cambodge
+120,CM,CMR,CAE,120,Cameroon,the Republic of Cameroon,Yaoundé,Cameroonian,LMC,AFR,M,Member State,Previously listed as United Republic of Cameroon,,,,Cameroun,la République du Cameroun
+124,CA,CAN,CAN,124,Canada,Canada,Ottawa,Canadian,HIC,AMR,M,Member State,,,,,Canada,le Canada
+132,CV,CPV,CAV,132,Cabo Verde,the Republic of Cabo Verde,Praia,Cabo Verdean,LMC,AFR,M,Member State,Previously listed as Cape Verde,,,,Cabo Verde,la République de Cabo Verde
+136,KY,CYM,CAY,136,Cayman Islands,,,,HIC,AMR,T,Territory or Area,,,,,Caïmans (les Îles),
+140,CF,CAF,CAF,140,Central African Republic,the Central African Republic,Bangui,"of the Central African Republic, Central African",LIC,AFR,M,Member State,,,,,République centrafricaine,la République centrafricaine
+144,LK,LKA,SRL,144,Sri Lanka,the Democratic Socialist Republic of Sri Lanka,Colombo,"of Sri Lanka, Sri Lankan",LMC,SEAR,M,Member State,,,,,Sri Lanka,la République socialiste démocratique de Sri Lanka
+148,TD,TCD,CHA,148,Chad,the Republic of Chad,N’Djamena,Chadian,LIC,AFR,M,Member State,,,,,Tchad,la République du Tchad
+152,CL,CHL,CHI,152,Chile,the Republic of Chile,Santiago,Chilean,HIC,AMR,M,Member State,,,,,Chili,la République du Chili
+156,CN,CHN,CHN,156,China,the People’s Republic of China,Beijing,Chinese,UMC,WPR,M,Member State,,,,,Chine,la République populaire de Chine
+158,TW,TWN,TWN,158,"Taiwan, China",,,,HIC,,E,Territory or Area (Excluded from WHO publications),,,,,,
+162,CX,CXR,CXR,162,Christmas Island,,,,,WPR,T,Territory or Area,,,,,Christmas (l'Île ),
+166,CC,CCK,CCK,166,Cocos (Keeling) Islands,,,,,WPR,T,Territory or Area,,,,,Cocos (les Îles)/ Keeling (les Îles),
+170,CO,COL,COL,170,Colombia,the Republic of Colombia,Bogotá,Colombian,UMC,AMR,M,Member State,,,,,Colombie,la République de Colombie
+174,KM,COM,COM,174,Comoros,the Union of the Comoros,Moroni,Comorian,LMC,AFR,M,Member State,,,,,Comores,l'Union des Comores
+175,YT,MYT,MTE,175,Mayotte,,,,,AFR,T,Territory or Area,,,,,Mayotte,
+178,CG,COG,CNG,178,Congo,the Republic of the Congo,Brazzaville,Congolese,LMC,AFR,M,Member State,,,,,Congo,la République du Congo
+180,CD,COD,COD,180,Democratic Republic of the Congo,the Democratic Republic of the Congo,Kinshasa,of the Democratic Republic of the Congo,LIC,AFR,M,Member State,Previously listed as Zaire,"ZAR, until 1997",,,République démocratique du Congo,la République démocratique du Congo
+184,CK,COK,COK,184,Cook Islands,the Cook Islands,Avarua,of the Cook Islands,,WPR,M,Member State,,,,,Îles Cook,les Îles Cook
+188,CR,CRI,COR,188,Costa Rica,the Republic of Costa Rica,San José,Costa Rican,UMC,AMR,M,Member State,,,,,Costa Rica,la République du Costa Rica
+191,HR,HRV,CRO,191,Croatia,the Republic of Croatia,Zagreb,Croatian,HIC,EUR,M,Member State,,,,Formerly part of the Socialist Federal Republic of Yugoslavia (numerical code 890),Croatie,la République de Croatie
+192,CU,CUB,CUB,192,Cuba,the Republic of Cuba,Havana,Cuban,UMC,AMR,M,Member State,,,,,Cuba,la République de Cuba
+196,CY,CYP,CYP,196,Cyprus,the Republic of Cyprus,Nicosia,Cypriot,HIC,EUR,M,Member State,,,,,Chypre,la République de Chypre
+203,CZ,CZE,CZH,203,Czechia,the Czech Republic,Prague,Czech,HIC,EUR,M,Member State,Previously listed as Czech Republic,,,Formerly part of Czechoslovakia (numerical code 200).,Tchéquie,la République tchèque
+204,BJ,BEN,BEN,204,Benin,the Republic of Benin,Porto-Novo,Beninese,LMC,AFR,M,Member State,Previuosly listed as Dahomey,"DHY, until 1977-08-01",,,Bénin,la République du Bénin
+208,DK,DNK,DEN,208,Denmark,the Kingdom of Denmark,Copenhagen,"Danish, of Denmark, a Dane",HIC,EUR,M,Member State,,,,,Danemark,le Royaume du Danemark
+212,DM,DMA,DOM,212,Dominica,the Commonwealth of Dominica,Roseau,of Dominica,UMC,AMR,M,Member State,,,,,Dominique,le Commonwealth de Dominique
+214,DO,DOM,DOR,214,Dominican Republic,the Dominican Republic,Santo Domingo,Dominican,UMC,AMR,M,Member State,,,,,République dominicaine,la République dominicaine
+218,EC,ECU,ECU,218,Ecuador,the Republic of Ecuador,Quito,Ecuadorian,UMC,AMR,M,Member State,,,,,Équateur,la République de l'Équateur
+222,SV,SLV,ELS,222,El Salvador,the Republic of El Salvador,San Salvador,"Salvadorian, Salvadoran",UMC,AMR,M,Member State,,,,,El Salvador,la République d'El Salvador
+226,GQ,GNQ,EQG,226,Equatorial Guinea,the Republic of Equatorial Guinea,Malabo,of Equatorial Guinea,UMC,AFR,M,Member State,,,,,Guinée équatoriale,la République de Guinée équatoriale
+231,ET,ETH,ETH,231,Ethiopia,the Federal Democratic Republic of Ethiopia,Addis Ababa,Ethiopian,LIC,AFR,M,Member State,,,,Formerly part of Ethiopia (numerical code 230).,Éthiopie,la République fédérale démocratique d'Éthiopie
+232,ER,ERI,ERI,232,Eritrea,Eritrea,Asmara,Eritrean,LIC,AFR,M,Member State,,,,Formerly part of Ethiopia (numerical code 230).,Érythrée,l'État d'Érythrée
+233,EE,EST,EST,233,Estonia,the Republic of Estonia,Tallinn,Estonian,HIC,EUR,M,Member State,,,,,Estonie,la République d'Estonie
+234,FO,FRO,FRO,234,Faroe Islands,,,of the Faroe Islands,HIC,EUR,A,Associate Member,,,,,Îles Féroé (les),
+238,FK,FLK,FLK,238,Falkland Islands (Malvinas),,,,,AMR,T,Territory or Area,,,,,Falkland (les Îles)/Malouines (les Îles),
+239,GS,SGS,SOG,239,South Georgia and the South Sandwich Islands,,,,,,T,Territory or Area,,,,,Géorgie du Sud-et-les Îles Sandwich du Sud (la),
+242,FJ,FJI,FIJ,242,Fiji,the Republic of Fiji,Suva,"of Fiji, Fiji Islanders",UMC,WPR,M,Member State,,,,,Fidji,la République des Fidji
+246,FI,FIN,FIN,246,Finland,the Republic of Finland,Helsinki,"Finnish, a Finn",HIC,EUR,M,Member State,,,,,Finlande,la République de Finlande
+248,AX,ALA,ALA,248,Åland Islands,,,,,,T,Territory or Area,,,,,Îles Åland (les),
+250,FR,FRA,FRA,250,France,the French Republic,Paris,"French, a Frenchman, a Frenchwoman",HIC,EUR,M,Member State,,,,,France,la République française
+254,GF,GUF,FRG,254,French Guiana,,,,,AMR,T,Territory or Area,,,,,Guyane française (la),
+258,PF,PYF,FRP,258,French Polynesia,,,,HIC,WPR,T,Territory or Area,,,,,Polynésie française (la),
+260,TF,ATF,ATF,260,French Southern Territories,,,,,,T,Territory or Area,,,,,Terres australes françaises (les),
+262,DJ,DJI,DJI,262,Djibouti,the Republic of Djibouti,Djibouti,"of Djibouti, a Djiboutian",LMC,EMR,M,Member State,Previusly listed as French Afars and Issas,"AFI, until 1978-07-15",,,Djibouti,la République de Djibouti
+266,GA,GAB,GAB,266,Gabon,the Gabonese Republic,Libreville,Gabonese,UMC,AFR,M,Member State,,,,,Gabon,la République gabonaise
+268,GE,GEO,GEO,268,Georgia,Georgia,Tbilisi,Georgian,UMC,EUR,M,Member State,,,,,Géorgie,la Géorgie
+270,GM,GMB,GAM,270,Gambia,Republic of the Gambia,Banjul,Gambian,LIC,AFR,M,Member State,,,,,Gambie,la République de Gambie
+275,PS,PSE,GAZ,275,"occupied Palestinian territory, including east Jerusalem",,,,LMC,EMR,T,Territory or Area,,,,,,"Territoire palestinien occupé, y compris Jérusalem-Est"
+276,DE,DEU,DEU,276,Germany,the Federal Republic of Germany,Berlin,German,HIC,EUR,M,Member State,,,,"through accession of the German Democratic Republic (numerical code 278) to the Federal Republic of Germany (numerical code 280), with effect from 3 October 1990, the two German States have united to form one sovereign State. As from the date of unification, the Federal Republic of Germany acts in the United Nations under the designation 'Germany' (numerical code 276)",Allemagne,la République fédérale d'Allemagne
+288,GH,GHA,GHA,288,Ghana,the Republic of Ghana,Accra,Ghanaian,LMC,AFR,M,Member State,,,,,Ghana,la République du Ghana
+292,GI,GIB,GIB,292,Gibraltar,,,,HIC,EUR,T,Territory or Area,,,,,Gibraltar,
+296,KI,KIR,KIR,296,Kiribati,the Republic of Kiribati,"Bairiki, Tarawa",of Kiribati,LMC,WPR,M,Member State,,,,,Kiribati,la République de Kiribati
+300,GR,GRC,GRE,300,Greece,the Hellenic Republic,Athens,Greek,HIC,EUR,M,Member State,,,,,Grèce,la République hellénique
+304,GL,GRL,GRN,304,Greenland,,,,HIC,EUR,T,Territory or Area,,,,,Groenland (le),
+308,GD,GRD,GRA,308,Grenada,Grenada,St George’s,Grenadian,UMC,AMR,M,Member State,,,,,Grenade,la Grenade
+312,GP,GLP,GUA,312,Guadeloupe,,,,,AMR,T,Territory or Area,,,,,Guadeloupe (la),
+316,GU,GUM,GUM,316,Guam,,,,HIC,WPR,T,Territory or Area,,,,,Guam,
+320,GT,GTM,GUT,320,Guatemala,the Republic of Guatemala,Guatemala City,Guatemalan,UMC,AMR,M,Member State,,,,,Guatemala,la République du Guatemala
+324,GN,GIN,GUI,324,Guinea,the Republic of Guinea,Conakry,Guinean,LMC,AFR,M,Member State,,,,,Guinée,la République de Guinée
+328,GY,GUY,GUY,328,Guyana,the Republic of Guyana,Georgetown,Guyanese,HIC,AMR,M,Member State,,,,,Guyana,la République du Guyana
+332,HT,HTI,HAI,332,Haiti,the Republic of Haiti,Port-au-Prince,Haitian,LMC,AMR,M,Member State,,,,,Haïti,la République d'Haïti
+334,HM,HMD,HMD,334,Heard Island and McDonald Islands,,,,,,T,Territory or Area,,,,,Heard-et-Îles MacDonald (l'Île),
+336,VA,VAT,VAT,336,Holy See,,,,,EUR,N,Not a Member State of WHO,,,,,Saint-Siège (le),
+340,HN,HND,HON,340,Honduras,the Republic of Honduras,Tegucigalpa,Honduran,LMC,AMR,M,Member State,,,,,Honduras,la République du Honduras
+344,HK,HKG,HOK,344,"China, Hong Kong SAR","China, Hong Kong Special Administrative REGION",,,HIC,,T,Territory or Area,"Pursuant to a Joint Declaration signed on 19 December 1984, the United Kingdom of Great Britain and Northern Ireland restored Hong Kong to the People's Republic of China with effect from 1 July 1997; the People's Republic of China resumed the exercise of sovereignty over the territory with effect from that date.",,,,,"Chine, région administrative spéciale de Hong Kong"
+348,HU,HUN,HUN,348,Hungary,Hungary,Budapest,Hungarian,HIC,EUR,M,Member State,,,,,Hongrie,la Hongrie
+352,IS,ISL,ICE,352,Iceland,Iceland,Reykjavik,"Icelandic, an Icelander",HIC,EUR,M,Member State,"On 12 October 2022, Iceland changed its full name to Iceland.",,,,Islande,la République d'Islande
+356,IN,IND,IND,356,India,the Republic of India,New Delhi,Indian,LMC,SEAR,M,Member State,,,,,Inde,la République de l'Inde
+360,ID,IDN,INO,360,Indonesia,the Republic of Indonesia,Jakarta,Indonesian,UMC,SEAR,M,Member State,,,,,Indonésie,la République d'Indonésie
+364,IR,IRN,IRA,364,Iran (Islamic Republic of),the Islamic Republic of Iran,Tehran,Iranian,UMC,EMR,M,Member State,,,,,Iran (République islamique d'),la République islamique d'Iran
+368,IQ,IRQ,IRQ,368,Iraq,the Republic of Iraq,Baghdad,Iraqi,UMC,EMR,M,Member State,,,,,Iraq,la République d'Iraq
+372,IE,IRL,IRE,372,Ireland,Ireland,Dublin,"Irish, the Irish, an Irishman, an Irishwoman",HIC,EUR,M,Member State,,,,,Irlande,l'Irlande
+376,IL,ISR,ISR,376,Israel,the State of Israel,‒,Israeli,HIC,EUR,M,Member State,,,,,Israël,l'État d'Israël
+380,IT,ITA,ITA,380,Italy,the Republic of Italy,Rome,Italian,HIC,EUR,M,Member State,,,,,Italie,la République italienne
+384,CI,CIV,IVC,384,Côte d’Ivoire,the Republic of Côte d'Ivoire,Yamoussoukro,Ivorian,LMC,AFR,M,Member State,Previously listed as Ivory Coast,,,,Côte d'Ivoire,la République de Côte d'Ivoire
+388,JM,JAM,JAM,388,Jamaica,Jamaica,Kingston,Jamaican,UMC,AMR,M,Member State,,,,,Jamaïque,la Jamaïque
+392,JP,JPN,JPN,392,Japan,Japan,Tokyo,Japanese,HIC,WPR,M,Member State,,,,,Japon,le Japon
+398,KZ,KAZ,KAZ,398,Kazakhstan,the Republic of Kazakhstan,Astana,Kazakh,UMC,EUR,M,Member State,,,"On 29 September 2022, Kazakhstan changed the name of its capital city to Astana.",,Kazakhstan,la République du Kazakhstan
+400,JO,JOR,JOR,400,Jordan,the Hashemite Kingdom of Jordan,Amman,Jordanian,LMC,EMR,M,Member State,,,,,Jordanie,le Royaume hachémite de Jordanie
+404,KE,KEN,KEN,404,Kenya,the Republic of Kenya,Nairobi,Kenyan,LMC,AFR,M,Member State,,,,,Kenya,la République du Kenya
+408,KP,PRK,KRD,408,Democratic People's Republic of Korea,the Democratic People's Republic of Korea,Pyongyang,of the Democratic People's Republic of Korea,LIC,SEAR,M,Member State,,,,,République populaire démocratique de Corée,la République populaire démocratique de Corée
+410,KR,KOR,KOR,410,Republic of Korea,the Republic of Korea,Seoul,of the Republic of Korea,HIC,WPR,M,Member State,,,,,République de Corée,la République de Corée
+412,XK,XKX,,412,Kosovo (in accordance with UN Security Council resolution 1244 (1999)),Kosovo (in accordance with UN Security Council resolution 1244 (1999)),,,UMC,,T,Territory or Area,,,,,,
+414,KW,KWT,KUW,414,Kuwait,the State of Kuwait,Kuwait City,Kuwaiti,HIC,EMR,M,Member State,,,,,Koweït,l'État du Koweït
+417,KG,KGZ,KGZ,417,Kyrgyzstan,the Kyrgyz Republic,Bishkek,Kyrgyz,LMC,EUR,M,Member State,,,,,Kirghizistan,la République kirghize
+418,LA,LAO,LAO,418,Lao People's Democratic Republic,the Lao People's Democratic Republic,Vientiane,"Lao, a Lao, the Lao",LMC,WPR,M,Member State,,,,,République démocratique populaire lao,la République démocratique populaire lao
+422,LB,LBN,LEB,422,Lebanon,the Lebanese Republic,Beirut,Lebanese,LMC,EMR,M,Member State,,,,,Liban,la République libanaise
+426,LS,LSO,LES,426,Lesotho,the Kingdom of Lesotho,Maseru,of Lesotho,LMC,AFR,M,Member State,,,,,Lesotho,le Royaume du Lesotho
+428,LV,LVA,LVA,428,Latvia,the Republic of Latvia,Riga,Latvian,HIC,EUR,M,Member State,,,,,Lettonie,la République de Lettonie
+430,LR,LBR,LIB,430,Liberia,the Republic of Liberia,Monrovia,Liberian,LIC,AFR,M,Member State,,,,,Libéria,la République du Libéria
+434,LY,LBY,LIY,434,Libya,State of Libya,Tripoli,Libyan,UMC,EMR,M,Member State,Previously listed as Libyan Arab Jamahiriya,,,,Libye,l'État de Libye
+438,LI,LIE,LIE,438,Liechtenstein,,,,HIC,EUR,N,Not a Member State of WHO,,,,,Liechtenstein (le),
+440,LT,LTU,LTU,440,Lithuania,the Republic of Lithuania,Vilnius,Lithuanian,HIC,EUR,M,Member State,,,,,Lituanie,la République de Lituanie
+442,LU,LUX,LUX,442,Luxembourg,the Grand Duchy of Luxembourg,Luxembourg,of Luxembourg,HIC,EUR,M,Member State,,,,,Luxembourg,le Grand-Duché de Luxembourg
+446,MO,MAC,MAC,446,"China, Macao SAR","China, Macao Special Administrative REGION",,,HIC,,T,Territory or Area,"Pursuant to a Joint Declaration signed on 13 April 1987, Portugal restored Macao to the People's Republic of China with effect from 20 December 1999; the People's Republic of China resumed the exercise of sovereignty over the territory with effect from that date.",,,,,"Chine, région administrative spéciale de Macao"
+450,MG,MDG,MAD,450,Madagascar,the Republic of Madagascar,Antananarivo,Malagasy,LIC,AFR,M,Member State,,,,,Madagascar,la République de Madagascar
+454,MW,MWI,MAL,454,Malawi,the Republic of Malawi,Lilongwe,Malawian,LIC,AFR,M,Member State,,,,,Malawi,la République du Malawi
+458,MY,MYS,MAA,458,Malaysia,Malaysia,Kuala Lumpur,Malaysian,UMC,WPR,M,Member State,,,,,Malaisie,la Malaisie
+462,MV,MDV,MAV,462,Maldives,the Republic of Maldives,Male’,Maldivian,UMC,SEAR,M,Member State,,,,,Maldives,la République des Maldives
+466,ML,MLI,MAI,466,Mali,the Republic of Mali,Bamako,Malian,LIC,AFR,M,Member State,,,,,Mali,la République du Mali
+470,MT,MLT,MAT,470,Malta,the Republic of Malta,Valletta,Maltese,HIC,EUR,M,Member State,,,,,Malte,la République de Malte
+474,MQ,MTQ,MAR,474,Martinique,,,,,AMR,T,Territory or Area,,,,,Martinique (la),
+478,MR,MRT,MAU,478,Mauritania,the Islamic Republic of Mauritania,Nouakchott,Mauritanian,LMC,AFR,M,Member State,,,,,Mauritanie,la République islamique de Mauritanie
+480,MU,MUS,MAS,480,Mauritius,the Republic of Mauritius,Port Louis,Mauritian,UMC,AFR,M,Member State,,,,,Maurice,la République de Maurice
+484,MX,MEX,MEX,484,Mexico,the United Mexican States,Mexico City,Mexican,UMC,AMR,M,Member State,,,,,Mexique,les États-Unis du Mexique
+492,MC,MCO,MON,492,Monaco,the Principality of Monaco,Monaco,Monegasque,HIC,EUR,M,Member State,,,,,Monaco,la Principauté de Monaco
+496,MN,MNG,MOG,496,Mongolia,Mongolia,Ulaanbaatar,Mongolian,UMC,WPR,M,Member State,,,,,Mongolie,la Mongolie
+498,MD,MDA,MDA,498,Republic of Moldova,the Republic of Moldova,Chisinau,Moldovan,UMC,EUR,M,Member State,Previously listed as Moldova,,,,République de Moldova,la République de Moldova
+499,ME,MNE,MNE,499,Montenegro,Montenegro,Podgorica,Montenegrin,UMC,EUR,M,Member State,,,,Formerly part of Serbia and Montenegro (numerical code 891),Monténégro,le Monténégro
+500,MS,MSR,MOT,500,Montserrat,,,,,AMR,T,Territory or Area,,,,,Montserrat,
+504,MA,MAR,MOR,504,Morocco,the Kingdom of Morocco,Rabat,Moroccan,LMC,EMR,M,Member State,,,,,Maroc,le Royaume du Maroc
+508,MZ,MOZ,MOZ,508,Mozambique,the Republic of Mozambique,Maputo,Mozambican,LIC,AFR,M,Member State,,,,,Mozambique,la République du Mozambique
+512,OM,OMN,OMA,512,Oman,the Sultanate of Oman,Muscat,Omani,HIC,EMR,M,Member State,,,,,Oman,le Sultanat d'Oman
+516,NA,NAM,NAM,516,Namibia,the Republic of Namibia,Windhoek,Namibian,UMC,AFR,M,Member State,,,,,Namibie,la République de Namibie
+520,NR,NRU,NRU,520,Nauru,the Republic of Nauru,Yaren,Nauruan,HIC,WPR,M,Member State,,,,,Nauru,la République de Nauru
+524,NP,NPL,NEP,524,Nepal,the Federal Democratic Republic of Nepal,Kathmandu,Nepalese,LMC,SEAR,M,Member State,,,,,Népal,la République fédérale démocratique du Népal
+528,NL,NLD,NET,528,Netherlands (Kingdom of the),the Kingdom of  the Netherlands,Amsterdam,"of the Netherlands, a Netherlander",HIC,EUR,M,Member State,The Netherlands changed its short name to Netherlands (Kingdom of the).,,,,Pays-Bas,le Royaume des Pays-Bas
+531,CW,CUW,CUW,531,Curaçao,,,,HIC,AMR,T,Territory or Area,,,,Formerly part of the Netherlands Antilles (numerical code 530),Curaçao,
+533,AW,ABW,ARU,533,Aruba,,,,HIC,AMR,T,Territory or Area,,,,"Formerly part of the Netherlands Antilles, Before 1986 (numerical code 532),",Aruba,
+534,SX,SXM,SXM,534,Sint Maarten (Dutch part),,,,HIC,AMR,T,Territory or Area,,,,Formerly part of the Netherlands Antilles (numerical code 530),Saint-Martin (partie néerlandaise),
+535,BQ,BES,BES,535,"Bonaire, Sint Eustatius and Saba","Bonaire, Sint Eustatius and Saba",,,,AMR,T,Territory or Area,,,,Formerly part of the Netherlands Antilles (numerical code 530),"Bonaire, Saint-Eustache et Saba",
+540,NC,NCL,NEC,540,New Caledonia,,,,HIC,WPR,T,Territory or Area,,,,,Nouvelle-Calédonie (la),
+548,VU,VUT,VAN,548,Vanuatu,the Republic of Vanuatu,Port Vila,"of Vanuatu, Vanuatuan",LMC,WPR,M,Member State,previously listed as New Hebrides,"NHB, unil 1980-01-15",,,Vanuatu,la République de Vanuatu
+554,NZ,NZL,NEZ,554,New Zealand,New Zealand,Wellington,"of New Zealand, a New Zealander",HIC,WPR,M,Member State,,,,,Nouvelle-Zélande,la Nouvelle-Zélande
+558,NI,NIC,NIC,558,Nicaragua,the Republic of Nicaragua,Managua,Nicaraguan,LMC,AMR,M,Member State,,,,,Nicaragua,la République du Nicaragua
+562,NE,NER,NIG,562,Niger,the Republic of the Niger,Niamey,of the Niger,LIC,AFR,M,Member State,,,,,Niger,la République du Niger
+566,NG,NGA,NIE,566,Nigeria,the Federal Republic of Nigeria,Abuja,Nigerian,LMC,AFR,M,Member State,,,,,Nigéria,la République fédérale du Nigéria
+570,NU,NIU,NIU,570,Niue,the Republic of Niue,Alofi,of Niue,,WPR,M,Member State,,,,,Nioué,Nioué
+574,NF,NFK,NFK,574,Norfolk Island,,,,,WPR,T,Territory or Area,,,,,Île Norfolk (l'),
+578,NO,NOR,NOR,578,Norway,the Kingdom of Norway,Oslo,Norwegian,HIC,EUR,M,Member State,,,,,Norvège,le Royaume de Norvège
+580,MP,MNP,NMI,580,Northern Mariana Islands,,,,HIC,WPR,T,Territory or Area,,,,Formerly part of Pacific Islands (Trust Territory) (numerical code 582),Mariannes du Nord (les Îles),
+581,UM,UMI,UMI,581,United States Minor Outlying Islands,,,,,,T,Territory or Area,,,,"United States Minor Outlying Islands (numerical code 581) formed by merging Johnston Island (numerical code 396), Midway Islands (numerical code 488), United States Miscellaneous Pacific Islands (numerical code 849), and Wake Island (numerical code 872).",Îles mineures éloignées des États-Unis (les),
+583,FM,FSM,MIC,583,Micronesia (Federated States of),the Federated States of Micronesia,Palikir,of the Federated States of Micronesia,LMC,WPR,M,Member State,,,,Formerly part of Pacific Islands (Trust Territory) (numerical code 582),Micronésie (États fédérés de),les États fédérés de Micronésie
+584,MH,MHL,MSI,584,Marshall Islands,the Republic of the  Marshall Islands,Majuro,"of the  Marshall Islands, Marshallese",UMC,WPR,M,Member State,,,,Formerly part of Pacific Islands (Trust Territory) (numerical code 582),Îles Marshall,la République des Îles Marshall
+585,PW,PLW,BLA,585,Palau,the Republic of Palau,Melekeok,of Palau,HIC,WPR,M,Member State,,,,Formerly part of Pacific Islands (Trust Territory) (numerical code 582).,Palaos,la République des Palaos
+586,PK,PAK,PAK,586,Pakistan,the Islamic Republic of Pakistan,Islamabad,"of Pakistan, a Pakistani",LMC,EMR,M,Member State,,,,,Pakistan,la République islamique du Pakistan
+591,PA,PAN,PAN,591,Panama,the Republic of Panama,Panama City,Panamanian,HIC,AMR,M,Member State,,,,,Panama,la République du Panama
+598,PG,PNG,PNG,598,Papua New Guinea,Independent State of Papua New Guinea,Port Moresby,"of Papua New Guinea, a Papua New Guinean",LMC,WPR,M,Member State,,,,,Papouasie-Nouvelle-Guinée,l'État indépendant de Papouasie-Nouvelle-Guinée
+600,PY,PRY,PAR,600,Paraguay,the Republic of Paraguay,Asunción,Paraguayan,UMC,AMR,M,Member State,,,,,Paraguay,la République du Paraguay
+604,PE,PER,PER,604,Peru,the Republic of Peru,Lima,Peruvian,UMC,AMR,M,Member State,,,,,Pérou,la République du Pérou
+608,PH,PHL,PHL,608,Philippines,the Republic of the Philippines,Manila,"Philippine, a Filipino",LMC,WPR,M,Member State,,,,,Philippines,la République des Philippines
+612,PN,PCN,PCN,612,Pitcairn,,,,,WPR,T,Territory or Area,Previously listed as Pitcairn Island,,,,Pitcairn,
+616,PL,POL,POL,616,Poland,the Republic of Poland,Warsaw,"Polish, a Pole",HIC,EUR,M,Member State,,,,,Pologne,la République de Pologne
+620,PT,PRT,POR,620,Portugal,the Portuguese Republic,Lisbon,Portuguese,HIC,EUR,M,Member State,,,,,Portugal,la République portugaise
+624,GW,GNB,GUB,624,Guinea-Bissau,the Republic of Guinea-Bissau,Bissau,of Guinea-Bissau,LIC,AFR,M,Member State,,,,,Guinée-Bissau,la République de Guinée-Bissau
+626,TL,TLS,TLS,626,Timor-Leste,the Democratic Republic of Timor-Leste,Dili,"of Timor-Leste, Timorese",LMC,SEAR,M,Member State,Previously listed as East Timor,"TMP, until 2002",,,Timor-Leste,la République démocratique du Timor-Leste
+630,PR,PRI,PUR,630,Puerto Rico,Puerto Rico,San Juan,Puerto Rican,HIC,AMR,A,Associate Member,,,,,Porto Rico,
+634,QA,QAT,QAT,634,Qatar,the State of Qatar,Doha,"of Qatar, Qatari",HIC,EMR,M,Member State,,,,,Qatar,l'État du Qatar
+638,RE,REU,REU,638,Réunion,,,,,AFR,T,Territory or Area,,,,,Réunion (la),
+642,RO,ROU,ROM,642,Romania,Romania,Bucharest,Romanian,HIC,EUR,M,Member State,,,,,Roumanie,la Roumanie
+643,RU,RUS,RUS,643,Russian Federation,the Russian Federation,Moscow,"of the Russian Federation, Russian",HIC,EUR,M,Member State,,,,,Fédération de Russie,la Fédération de Russie
+646,RW,RWA,RWA,646,Rwanda,the Republic of Rwanda,Kigali,Rwandan,LIC,AFR,M,Member State,,,,,Rwanda,la République du Rwanda
+652,BL,BLM,BLM,652,Saint Barthélemy,,,,,AMR,T,Territory or Area,,,,Issued a numerical code in 2007,Saint-Barthélemy,
+654,SH,SHN,SAH,654,Saint Helena,,,,,AFR,T,Territory or Area,,,,,"Sainte-Hélène, Ascension et Tristan da Cunha",
+659,KN,KNA,SCN,659,Saint Kitts and Nevis,Saint Kitts and Nevis,Basseterre,of Saint Kitts and Nevis,HIC,AMR,M,Member State,,,,,Saint-Kitts-et-Nevis,Saint-Kitts-et-Nevis
+660,AI,AIA,ANU,660,Anguilla,,,,,AMR,T,Territory or Area,,,,,Anguilla,
+662,LC,LCA,SAL,662,Saint Lucia,Saint Lucia,Castries,Saint Lucian,UMC,AMR,M,Member State,,,,,Sainte-Lucie,Sainte-Lucie
+663,MF,MAF,MAF,663,Saint Martin (French part),,,,HIC,AMR,T,Territory or Area,,,,Issued a numerical code in 2007,Saint-Martin (partie française),
+666,PM,SPM,SPM,666,Saint Pierre and Miquelon,,,,,AMR,T,Territory or Area,,,,,Saint-Pierre-et-Miquelon,
+670,VC,VCT,SAV,670,Saint Vincent and the Grenadines,Saint Vincent and the Grenadines,Kingstown,of Saint Vincent and the Grenadines,UMC,AMR,M,Member State,,,,,Saint-Vincent-et-les Grenadines,Saint-Vincent-et-les Grenadines
+674,SM,SMR,SMR,674,San Marino,the Republic of San Marino,San Marino,"of San Marino, San Marinese",HIC,EUR,M,Member State,,,,,Saint-Marin,la République de Saint-Marin
+678,ST,STP,STP,678,Sao Tome and Principe,the Democratic Republic of Sao Tome and Principe,Sao Tome,of Sao Tome and Principe,LMC,AFR,M,Member State,,,,,Sao Tomé-et-Principe,la République démocratique de Sao Tomé-et-Principe
+682,SA,SAU,SAA,682,Saudi Arabia,the Kingdom of Saudi Arabia,Riyadh,Saudi Arabian,HIC,EMR,M,Member State,,,,,Arabie saoudite,le Royaume d'Arabie saoudite
+686,SN,SEN,SEN,686,Senegal,the Republic of Senegal,Dakar,Senegalese,LMC,AFR,M,Member State,,,,,Sénégal,la République du Sénégal
+688,RS,SRB,SRB,688,Serbia,the Republic of Serbia,Belgrade,"Serbian, a Serb",UMC,EUR,M,Member State,,,,Formerly part of Serbia and Montenegro (numerical code 891),Serbie,la République de Serbie
+690,SC,SYC,SEY,690,Seychelles,the Republic of Seychelles,Victoria,"of Seychelles, a Seychellois",HIC,AFR,M,Member State,,,,,Seychelles,la République des Seychelles
+694,SL,SLE,SIL,694,Sierra Leone,the Republic of Sierra Leone,Freetown,Sierra Leonean,LIC,AFR,M,Member State,,,,,Sierra Leone,la République de Sierra Leone
+702,SG,SGP,SIN,702,Singapore,the Republic of Singapore,Singapore,Singaporean,HIC,WPR,M,Member State,,,,,Singapour,la République de Singapour
+703,SK,SVK,SVK,703,Slovakia,the Slovak Republic,Bratislava,Slovak,HIC,EUR,M,Member State,,,,Formerly part of Czechoslovakia (numerical code 200).,Slovaquie,la République slovaque
+704,VN,VNM,VTN,704,Viet Nam,the Socialist Republic of Viet Nam,Hanoi,Vietnamese,LMC,WPR,M,Member State,,,,,Viet Nam,la République socialiste du Viet Nam
+705,SI,SVN,SVN,705,Slovenia,the Republic of Slovenia,Ljubljana,Slovene,HIC,EUR,M,Member State,,,,Formerly part of the Socialist Federal Republic of Yugoslavia (numerical code 890),Slovénie,la République de Slovénie
+706,SO,SOM,SOM,706,Somalia,the Federal Republic of Somalia,Mogadishu,Somali,LIC,EMR,M,Member State,,,,,Somalie,la République fédérale de Somalie
+710,ZA,ZAF,SOA,710,South Africa,the Republic of South Africa,Pretoria,South African,UMC,AFR,M,Member State,,,,,Afrique du Sud,la République sud-africaine
+716,ZW,ZWE,ZIM,716,Zimbabwe,the Republic of Zimbabwe,Harare,Zimbabwean,LMC,AFR,M,Member State,"1980-01-15 Name changed from Southern Rhodesia (RH, RHO, --) to Zimbabwe (ZW, ZWE, 716).","RHO, until 1980-01-15",,,Zimbabwe,la République du Zimbabwe
+724,ES,ESP,SPA,724,Spain,the Kingdom of Spain,Madrid,"Spanish, a Spaniard, the Spanish",HIC,EUR,M,Member State,,,,,Espagne,le Royaume d'Espagne
+728,SS,SSD,SSD,728,South Sudan,the Republic of South Sudan,Juba,South Sudanese,LIC,AFR,M,Member State,,,,Formerly part of Sudan (numerical code 736),Soudan du Sud,la République du Soudan du Sud
+729,SD,SDN,SUD,729,Sudan,the Republic of the Sudan,Khartoum,Sudanese,LIC,EMR,M,Member State,,,,Formerly part of Sudan (numerical code 736),Soudan,la République du Soudan
+732,EH,ESH,ESH,732,Western Sahara,,,,,AFR,E,Territory or Area (Excluded from WHO publications),,,,,Sahara occidental (le),
+740,SR,SUR,SUR,740,Suriname,the Republic of Suriname,Paramaribo,Surinamese,UMC,AMR,M,Member State,,,,,Suriname,la République du Suriname
+744,SJ,SJM,SJM,744,Svalbard and Jan Mayen,,,,,EUR,T,Territory or Area,,,,,Svalbard et l'Île Jan Mayen (le),
+748,SZ,SWZ,SWZ,748,Eswatini,the Kingdom of Eswatini,Mbabane,Swazi,LMC,AFR,M,Member State,Previously listed as Swaziland,,,,Eswatini,le Royaume d’Eswatini
+752,SE,SWE,SWE,752,Sweden,the Kingdom of Sweden,Stockholm,"Swedish, a Swede",HIC,EUR,M,Member State,,,,,Suède,le Royaume de Suède
+756,CH,CHE,SWI,756,Switzerland,the Swiss Confederation,Bern,Swiss,HIC,EUR,M,Member State,,,,,Suisse,la Confédération suisse
+760,SY,SYR,SYR,760,Syrian Arab Republic,the Syrian Arab Republic,Damascus,Syrian,LIC,EMR,M,Member State,,,,,République arabe syrienne,la République arabe syrienne
+762,TJ,TJK,TJK,762,Tajikistan,the Republic of Tajikistan,Dushanbe,Tajik,LMC,EUR,M,Member State,,,,,Tadjikistan,la République du Tadjikistan
+764,TH,THA,THA,764,Thailand,the Kingdom of Thailand,Bangkok,Thai,UMC,SEAR,M,Member State,,,,,Thaïlande,le Royaume de Thaïlande
+768,TG,TGO,TOG,768,Togo,the Togolese Republic,Lomé,Togolese,LIC,AFR,M,Member State,,,,,Togo,la République togolaise
+772,TK,TKL,TOK,772,Tokelau,Tokelau,,of Tokelau,,WPR,A,Associate Member,,,,,Tokelau (les),
+776,TO,TON,TON,776,Tonga,the Kingdom of Tonga,Nuku’alofa,Tongan,UMC,WPR,M,Member State,,,,,Tonga,le Royaume des Tonga
+780,TT,TTO,TRT,780,Trinidad and Tobago,the Republic of Trinidad and Tobago,Port of Spain,of Trinidad and Tobago,HIC,AMR,M,Member State,,,,,Trinité-et-Tobago,la République de Trinité-et-Tobago
+784,AE,ARE,UAE,784,United Arab Emirates,the United Arab Emirates,Abu Dhabi,of the United Arab Emirates,HIC,EMR,M,Member State,,,,,Émirats arabes unis,les Émirats arabes unis
+788,TN,TUN,TUN,788,Tunisia,the Republic of Tunisia,Tunis,Tunisian,LMC,EMR,M,Member State,,,,,Tunisie,la République tunisienne
+792,TR,TUR,TUR,792,Türkiye,the Republic of Türkiye,Ankara,"Turkish, a Turk",UMC,EUR,M,Member State,Previously listed as Turkey,,,,Türkiye,la République de Türkiye
+795,TM,TKM,TKM,795,Turkmenistan,Turkmenistan,Ashgabat,Turkmen,UMC,EUR,M,Member State,,,,,Turkménistan,le Turkménistan
+796,TC,TCA,TCA,796,Turks and Caicos Islands,,,,HIC,AMR,T,Territory or Area,,,,,Turks-et-Caïcos (les Îles),
+798,TV,TUV,TUV,798,Tuvalu,Tuvalu,Fongafale,Tuvaluan,UMC,WPR,M,Member State,,,,,Tuvalu,Tuvalu
+800,UG,UGA,UGA,800,Uganda,the Republic of Uganda,Kampala,Ugandan,LIC,AFR,M,Member State,,,,,Ouganda,la République de l'Ouganda
+804,UA,UKR,UKR,804,Ukraine,Ukraine,Kyiv,Ukrainian,UMC,EUR,M,Member State,Previously listed as Ukrainian Soviet Socialist Republic,,,,Ukraine,l'Ukraine
+807,MK,MKD,MKD,807,North Macedonia,the Republic of North Macedonia,Skopje,"of North Macedonia, Macedonian, a Macedonian",UMC,EUR,M,Member State,Previously listed as the former Yugoslav Republic of Macedonia,,,Formerly part of the Socialist Federal Republic of Yugoslavia (numerical code 890),Macédoine du Nord,la République de Macédoine du Nord
+818,EG,EGY,EGY,818,Egypt,the Arab Republic of Egypt,Cairo,Egyptian,LMC,EMR,M,Member State,,,,,Égypte,la République arabe d'Égypte
+826,GB,GBR,UNK,826,United Kingdom of Great Britain and Northern Ireland,the United Kingdom of Great Britain and Northern Ireland,London,"of the United Kingdom, British",HIC,EUR,M,Member State,,,,,Royaume-Uni de Grande-Bretagne et d'Irlande du Nord,le Royaume-Uni (de Grande- Bretagne et d'Irlande du Nord)
+831,GG,GGY,GGY,831,Guernsey,,,,,EUR,T,Territory or Area,,,,,Guernesey,
+832,JE,JEY,JEY,832,Jersey,,,,,EUR,T,Territory or Area,,,,,Jersey,
+833,IM,IMN,IMN,833,Isle of Man,,,,HIC,EUR,T,Territory or Area,,,,,Île de Man,
+834,TZ,TZA,TAN,834,United Republic of Tanzania,the United Republic of Tanzania,Dodoma,Tanzanian,LMC,AFR,M,Member State,,,,,République-Unie de Tanzanie,la République-Unie de Tanzanie
+840,US,USA,USA,840,United States of America,the United States of America,"Washington, DC","of the United States (of America), American",HIC,AMR,M,Member State,,,,,États-Unis d'Amérique,les États-Unis d'Amérique
+850,VI,VIR,VUS,850,United States Virgin Islands,,,,HIC,AMR,T,Territory or Area,,,,,Vierges des États-Unis (les Îles),
+854,BF,BFA,BFA,854,Burkina Faso,Burkina Faso,Ouagadougou,of Burkina Faso,LIC,AFR,M,Member State,Previously listed as Upper Volta,"HVO, until 1984-11-30",,,Burkina Faso,le Burkina Faso
+858,UY,URY,URU,858,Uruguay,the Eastern Republic of Uruguay,Montevideo,Uruguayan,HIC,AMR,M,Member State,,,,,Uruguay,la République orientale de l'Uruguay
+860,UZ,UZB,UZB,860,Uzbekistan,the Republic of Uzbekistan,Tashkent,Uzbek,LMC,EUR,M,Member State,,,,,Ouzbékistan,la République d'Ouzbékistan
+862,VE,VEN,VEN,862,Venezuela (Bolivarian Republic of),the Bolivarian Republic of Venezuela,Caracas,Venezuelan,,AMR,M,Member State,Previously Venezuela,,,,Venezuela (République bolivarienne du),la République bolivarienne du Venezuela
+876,WF,WLF,WAF,876,Wallis and Futuna,,,,,WPR,T,Territory or Area,,,,,Wallis-et-Futuna,
+882,WS,WSM,SMA,882,Samoa,the Independent State of Samoa,Apia,Samoan,LMC,WPR,M,Member State,,,,,Samoa,l'État indépendant du Samoa
+887,YE,YEM,YEM,887,Yemen,the Republic of Yemen,Sana’a,"Yemeni, a Yemenite",LIC,EMR,M,Member State,,,,"On 22 May 1990, Democratic Yemen (numerical code 720) and Yemen (numerical code 886) merged to form a single sovereign State. Since that date, they have been represented as one member of the United Nations with the name 'Yemen' (numerical code 887)",Yémen,la République du Yémen
+894,ZM,ZMB,ZAM,894,Zambia,the Republic of Zambia,Lusaka,Zambian,LMC,AFR,M,Member State,,,,,Zambie,la République de Zambie

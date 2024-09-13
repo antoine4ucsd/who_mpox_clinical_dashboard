@@ -1,0 +1,1031 @@
+---
+format: 
+  dashboard:
+    scrolling: true
+    nav-buttons:
+      - icon: globe
+        href: https://www.who.int/tools/global-clinical-platform/monkeypox
+logo: images/my_logo_white.png
+theme: [sandstone, theme/custom.scss]
+fig-width: 10
+fig-asp: 0.3
+---
+
+
+```{r}
+#| label: load-packages
+#| message: false
+library(here)
+source(here("function/","mpox_dash.R"))
+source(here("function/","mpox_prep.R"))
+library(DT)
+
+library(BodyMapR)
+theme_set(theme_minimal(base_size = 24, base_family = "Atkinson Hyperlegible"))
+
+
+
+```
+
+
+
+```{r}
+#| label: prep-data
+#| results: hide
+#| message: false
+#| show: false
+
+data_redcap_raw<- readRDS(here("data/","data_ilich_facilities.RDS"))
+
+data_redcap<- data_redcap_raw|>dplyr::mutate(country=admcou.factor)|>
+        dplyr::left_join(whotools::ref_country,by=c("country"))|>
+        dplyr::mutate(admcou.factor =  droplevels.factor(admcou.factor),
+                      admsit = droplevels.factor(admsit))|>
+        add_facility_short()|>
+        hiv_fun()
+
+data_sum<- data_redcap|>
+  dplyr::summarise(cases=n_distinct(admpar),
+                   contributors=n_distinct(facility_short),
+                   .by=iso3)|>dplyr::filter(!is.na(iso3))
+
+sfs<- readRDS(here("data/","sfs.RDS"))
+spatialines <- sf:::as_Spatial(sfs$adm0_line$geometry)
+spatialborder <- sf:::as_Spatial(sfs$disp_border$geometry)
+
+data_sf <- left_join(
+  sfs$adm0,
+  data_sum,
+  by = c("iso_3_code" = "iso3")
+)
+
+
+
+as_of<- max(as.Date(data_redcap$adm01),na.rm=T)
+
+total_cases <- data_redcap$admpar|>n_distinct()
+country_df<- data_redcap|>distinct(country)|>dplyr::filter(!is.na(country))
+total_countries <- country_df$country|>n_distinct()
+
+total_facility=data_redcap$facility_short|>n_distinct()
+
+hiv_df<- data_redcap|>distinct(admpar,hiv_status)|>dplyr::filter(hiv_status=="People with HIV")
+total_hiv=hiv_df$admpar|>n_distinct()
+
+death_df<- data_redcap|>distinct(admpar,dis34.factor)|>dplyr::filter(dis34.factor=="Death")
+total_death=death_df$admpar|>n_distinct()
+
+sex_df<- data_redcap|>distinct(admpar,adm02.factor)|>dplyr::filter(adm02.factor=="Female")
+female_perc<- sex_df$admpar|>n_distinct()/data_redcap$admpar|>n_distinct()
+
+
+body_map.png <- BodyMapR::BodyMapR_biorender.png
+body_df<- data.frame(cbind(name=c("Face", "Nares", "Mouth", "Chest", "Abdomen", "Back", "Perianal", 
+                                  "Genitals", "Rectal", "Palms", "Arms", "Forearms", "Thighs", 
+                                  "Legs", "Soles"),
+                           x_coord=c(34,35,35,35,35,64,64,35,64,47,42,44,36,38,39),
+                           y_coord=c(92,95,89,75,55,75,49,48,46,50,67,58,45,30,5)))|>
+        dplyr::mutate(x_coord=as.numeric(x_coord),
+                      y_coord=as.numeric(y_coord))
+
+color_palette <- c("#CC79A7", "#009E73")
+
+
+```
+
+#  {.sidebar width="12%"}
+
+------------------------------------------------------------------------
+
+![](images/mpox2.jpeg){.lightbox}
+
+------------------------------------------------------------------------
+
+This dashboard displays statistics for:
+
+|                               |                     |
+|-------------------------------|---------------------|
+| **Total cases:**              | `r total_cases`     |
+| **Total reporting countries** | `r total_countries` |
+| **As of:**                    | `r as_of`           |
+
+------------------------------------------------------------------------
+
+![](images/my_logo.png){.lightbox}
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+![](images/logo.jpeg){.lightbox}
+
+------------------------------------------------------------------------
+
+::: {.callout-note collapse="true"}
+
+## Disclaimer
+
+This is a brief overview of the data reported to [the WHO Clinical data platform for mpox](https://www.who.int/tools/global-clinical-platform/monkeypox).
+:::
+
+# At a glance
+
+```{r}
+#| label: all-values
+#| results: hide
+
+
+
+
+data_sex_age<- data_redcap|>sex_age_fun()%>%
+  dplyr::filter(!is.na(`Sex at birth`))%>%
+  dplyr::group_by(`Sex at birth`,week = lubridate::floor_date(date, "week"))%>%
+  dplyr::mutate(week_start = floor_date(date, "week", 1)) %>%
+  dplyr::filter(!is.na(`Sex at birth`)) %>%
+  filter(week_start > lubridate::ymd("2022-05-01")) %>%
+  dplyr::filter(!is.na(week_start)) %>%
+  dplyr::group_by(week_start) %>%
+  dplyr::summarise(
+    count_male = sum(`Sex at birth` %in% "Male"),
+    count_female = sum(`Sex at birth` %in% "Female"),
+    
+    count_male_female = n(),
+    prop_male = sum(`Sex at birth` %in% "Male") / n()
+  )%>%dplyr::ungroup()
+
+
+mpox_data<- data_redcap|>main_fun()|>
+  rename_fun() %>% 
+  dplyr::select(varlist)|>
+  label_fun()
+
+for (x in c("Respiratory_rate", vitals_list, lab_test,ext_lab_test)) {
+  mpox_data[[x]] <- as.numeric(mpox_data[[x]])
+}
+
+
+mirror_lesions_data<- mpox_data |>
+  dplyr::select("admpar","HIV",lesion_list)|>
+  sjlabelled::label_to_colnames()|>
+  unlabel()|>pivot_longer(
+    cols = -c(`Participant ID`,HIV),
+    names_to = "name",
+    values_to = "value"
+  )|>
+  dplyr::mutate(value_num=to_yn_char2num(value))|>
+  dplyr::filter(!is.na(value))|>
+  dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,HIV,name))|>
+  dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(HIV,name))|>
+  dplyr::summarise(
+    N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+    n = sum(str_count("Yes",prev)),
+    pct = n / N,
+    .by = c(HIV,name)
+  )|>
+  dplyr::mutate(
+    lab_pct = str_c(round(pct * 100), "%"),
+    lab_n = str_c(n, " / ", N)
+  ) |>
+  dplyr::mutate(name=str_to_title(gsub("_"," ",name)))
+
+mirror_comp_data<- mpox_data |>
+  dplyr::select("admpar","HIV",complications)|>
+  sjlabelled::label_to_colnames()|>
+  unlabel()|>pivot_longer(
+    cols = -c(`Participant ID`,HIV),
+    names_to = "name",
+    values_to = "value"
+  )|>
+  dplyr::mutate(value_num=to_yn_char2num(value))|>
+  dplyr::filter(!is.na(value))|>
+  dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,HIV,name))|>
+  dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(HIV,name))|>
+  dplyr::summarise(
+    N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+    n = sum(str_count("Yes",prev)),
+    pct = n / N,
+    .by = c(HIV,name)
+  )|>
+  dplyr::mutate(
+    lab_pct = str_c(round(pct * 100), "%"),
+    lab_n = str_c(n, " / ", N)
+  ) |>
+  dplyr::mutate(name=str_to_title(gsub("_"," ",name)))
+
+
+
+
+```
+
+## Row {height="15%"}
+
+```{r}
+#| content: valuebox
+#| title: "Total countries"
+
+list(
+  icon = "globe", # "file-medical", https://icons.getbootstrap.com/?q=hospital
+  color = "primary",
+  value = total_countries
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total cases"
+
+list(
+  icon = "clipboard2-pulse",
+  color = "warning",
+  value = total_cases
+)
+
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total facilities"
+
+list(
+  icon = "hospital", # "calendar-week",
+  color = "#DFD3FF",
+  value = total_facility
+)
+```
+
+## Row {height="15%"}
+
+```{r}
+#| content: valuebox
+#| title: "Women"
+
+list(
+  icon = "gender-female",
+  color = "#CC79A7", # ("primary", "info", "success", "warning", "danger") 
+  value = label_percent(accuracy = 0.1)(female_perc)
+)
+
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total PLWH"
+
+list(
+  icon = "virus",
+  color = "success",
+  value = total_hiv
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total deaths"
+
+list(
+  icon = "person-x",#  "file-medical",
+  color = "danger",
+  value = total_death
+)
+```
+
+## Row {height="70%"}
+
+### Column {width="100%"}
+
+```{r}
+#| title: Geospatial distribution
+
+
+
+plot_map_lgd_fun_norender_who2(data_sf)
+
+
+```
+
+<!-- # Cases distribution {orientation="columns"} -->
+
+# Cases description
+
+## Row {height="40%"}
+
+### Column {width="60%"}
+
+```{r}
+#| title: Cases reported
+
+data_sex_age|> 
+  e_charts(week_start) |> 
+  e_bar(`count_male`, stack = "grp", color = "#1f77b4",
+        name = "Males",
+        bind = count_male,
+        label = list(
+          show = F,
+          formatter = htmlwidgets::JS(
+            "function(params) {
+              if (params.value[1] === 0) {
+                return '';
+              } else {
+                return params.value[1];
+              }
+            }"
+          ),
+          position = "outside"
+        )
+  ) |>
+  e_bar(`count_female`, stack = "grp", color = "#e377c2",
+        name = "Females",
+        bind = count_female,
+        label = list(
+          show = F,
+          formatter = htmlwidgets::JS(
+            "function(params) {
+              if (params.value[1] === 0) {
+                return null;
+              } else {
+                return params.value[1];
+              }
+            }"
+          ),
+          position = "outside"
+        )
+  ) |>
+  e_y_axis(nameLocation = 'middle',nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 25,
+           name = "Number of cases"#, max = max_cases
+  ) %>%
+  e_x_axis(name="Date",position="bottom",nameLocation = 'middle', nameGap = 25,
+           nameTextStyle = list(fontWeight = 'bold',fontSize = 16))|>
+  e_tooltip(trigger = "axis", backgroundColor = "rgba(255,255,255,0.7)")|>
+  e_grid(left = "10%", bottom = "90",top="80",right="10%")|>
+  e_toolbox_feature(feature = c("saveAsImage"))
+
+
+
+
+```
+
+### Column {width="40%"}
+
+```{r}
+#| title: Mirror plots
+
+ data_redcap|>
+                        
+                        sex_age_fun()|>
+                        dplyr::filter(!is.na(`Age group`))|>
+                        dplyr::filter(!is.na(`Sex at birth`))|>
+                        dplyr::summarise(n=n(),.by=c(`Age group`,`Sex at birth`))|>spread(`Sex at birth`,n)|>
+                        ungroup()|>
+                        dplyr::mutate(Female=-Female)|>
+                        # group_by(`Sex at birth`)|>
+                        e_chart(`Age group`)|>
+                        e_bar(Female,stack = "grp",color = "#e377c2")|>
+                        e_bar(Male,stack = "grp", color = "#1f77b4")|>
+                        e_flip_coords()|>
+                        e_y_axis(nameLocation = 'middle',position="left",
+                                 nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 65,
+                                 name = "Age groups"#, max = max_cases
+                        ) %>%
+                        e_x_axis(nameLocation = 'middle',nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 25,
+                                 name = "Number of cases",
+                                 axisLabel = list(show = TRUE, formatter = htmlwidgets::JS(
+                                         'function(value){return Math.abs(value);}'))) |>
+                        e_tooltip(trigger = "item", 
+                                  # formatter = e_tooltip_item_formatter("percent"),
+                                  backgroundColor = "rgba(255,255,255,0.7)")|>
+                        
+                        # e_title("Age and sex\ndistribution")|>
+                        e_grid(left = "20%", bottom = "90",top="80",right="10%")|>
+                        e_toolbox_feature(feature = c("saveAsImage"))
+```
+
+## Row {height="60%"}
+
+### Column {width="50%"}
+
+```{r}
+#| title: Chronic conditions
+
+tab_chronic<-  mpox_data |>
+  # dplyr::select("country","admpar",starts_with("adm73")&!contains("factor"))|>sjlabelled::label_to_colnames()|>
+  dplyr::select("admpar",chronic_condition)|>sjlabelled::label_to_colnames()|>
+  unlabel()|>pivot_longer(
+    cols = -c(`Participant ID`),
+    names_to = "name",
+    values_to = "value"
+  )|>
+  dplyr::mutate(value_num=to_yn_char2num(value))|>
+  dplyr::filter(!is.na(value))|>
+  dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+  dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+  dplyr::summarise(
+    N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+    n = sum(str_count("Yes",prev)),
+    pct = n / N,
+    .by = c(name)
+  ) |>
+  dplyr::mutate(
+    lab_pct = str_c(round(pct * 100), "%"),
+    lab_n = str_c(n, " / ", N)
+  ) |>
+  dplyr::select(-lab_pct)|>
+  dplyr::filter(n>0)|> # to only keep if present
+  gt()|>
+  # gt_merge_stack(col1 = location, col2 = groups) %>%
+  cols_label(name = "Variable",
+             N = "Sample size",
+             n = "Prevalence",
+             lab_n="Frequency",
+  ) %>%
+  fmt_percent(
+    columns = pct,
+    decimals = 1
+  )|>
+  cols_align(
+    align = c( "center"),
+    columns = c(pct,N,n,lab_n)
+  )|>
+  gt_plt_bar(n, fill = colors[1],color =colors[1] )%>%
+  gt_color_rows(pct, palette = c("white", colors[1])) |>
+  cols_width(name~px(60))%>%
+  tab_options(heading.title.font.size = px(24)) %>%
+  # tab_header(
+  #         title = md(paste0("**Chronic conditions**"))
+  # )|>
+  tab_source_note(md("Source: *WHO*"))
+
+tab_chronic|>gt_theme_pff()
+```
+
+### Column {width="50%"}
+
+```{r}
+#| title: Complications
+
+
+tab_comp<- mpox_data |>
+                        dplyr::select("admpar",complications)|>
+                        sjlabelled::label_to_colnames()|>
+                        unlabel()|>pivot_longer(
+                                cols = -c(`Participant ID`),
+                                names_to = "name",
+                                values_to = "value"
+                        )|>
+                        dplyr::mutate(value_num=to_yn_char2num(value))|>
+                        dplyr::filter(!is.na(value))|>
+                        dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+                        dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+                        dplyr::summarise(
+                                N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+                                n = sum(str_count("Yes",prev)),
+                                pct = n / N,
+                                .by = c(name)
+                        )|>
+                        dplyr::mutate(
+                                lab_pct = str_c(round(pct * 100), "%"),
+                                lab_n = str_c(n, " / ", N)
+                        ) |>
+                        dplyr::mutate(name=str_to_title(gsub("_"," ",name)))|>
+                        
+                        dplyr::select(-lab_pct)|>
+                        dplyr::filter(n>0)|> # to only keep if present
+                        gt()|>
+                        # gt_merge_stack(col1 = location, col2 = groups) %>%
+                        cols_label(name = "Variable",
+                                   N = "Sample size",
+                                   n = "Prevalence",
+                                   lab_n="Frequency",
+                        ) %>%
+                        fmt_percent(
+                                columns = pct,
+                                decimals = 1
+                        )|>
+                        cols_align(
+                                align = c( "center"),
+                                columns = c(pct,N,n,lab_n)
+                        )|>
+                        gt_plt_bar(n, fill = colors[1],color =colors[1] )%>%
+                        gt_color_rows(pct, palette = c("white", colors[1])) |>
+                        cols_width(name~px(60))%>%
+                        tab_options(heading.title.font.size = px(24)) |>
+                        tab_source_note(md("Source: *WHO*"))
+                
+
+tab_comp|>gt_theme_pff()
+```
+
+# Skin lesions {orientation="columns"}
+
+## Column {width="60%"}
+
+### Row {height="100%"}
+
+```{r}
+#| title: Body map
+
+
+lesions_data <- mpox_data |>
+                        dplyr::select("admpar",lesion_list)|>dplyr::select(-number_lesion)|>
+                        sjlabelled::label_to_colnames()|>
+                        unlabel()|>pivot_longer(
+                                cols = -c(`Participant ID`),
+                                names_to = "name",
+                                values_to = "value"
+                        )|>
+                        dplyr::mutate(value_num=to_yn_char2num(value))|>
+                        dplyr::filter(!is.na(value))|>
+                        dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+                        dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+                        dplyr::summarise(
+                                N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+                                n = sum(str_count("Yes",prev)),
+                                pct = n / N,
+                                .by = c(name)
+                        )|>
+                        dplyr::mutate(
+                                lab_pct = str_c(round(pct * 100), "%"),
+                                lab_n = str_c(n, "/", N)
+                        ) |>
+                        dplyr::mutate(name=gsub("_lesion","",name))|>
+                        
+                        dplyr::select(-lab_pct)
+
+
+lesion_data2body<- lesions_data|>dplyr::left_join(body_df,by="name")|>
+                        dplyr::mutate(labels=paste0(name,"\n",lab_n))
+                
+body_plot2<- lesion_data2body|>
+  ggplot(aes(x=x_coord,y=y_coord,size=n,fill=n,color=n,text=labels))+ 
+  xlim(25, 75) +  
+  ylim(0,100) + 
+  theme_bw() + 
+  annotation_raster(body_map.png, 
+                    ymin = 0, xmin = 0, xmax = 100, ymax = 100)+ 
+  geom_point()+
+  scale_fill_gradientn(colors = pal_reds) +  # Apply fill color palette
+  scale_color_gradientn(colors = pal_reds) + # Apply color palette
+  theme(legend.position = "none",
+        panel.border = element_blank(), 
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.line = element_blank()) + 
+  theme(axis.text.x = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(), 
+        axis.title = element_blank()) 
+
+
+
+plotly::ggplotly(body_plot2, tooltip = "text")
+                
+                
+
+```
+
+## Column {width="40%"}
+
+### Row {height="50%"}
+
+```{r}
+#| title: Prevalence of lesions
+
+lesions_data |>
+                        dplyr::filter(n>0)|> # to only keep if present
+                        gt()|>
+                        # gt_merge_stack(col1 = location, col2 = groups) %>%
+                        cols_label(name = "Variable",
+                                   N = "Sample size",
+                                   n = "Prevalence",
+                                   lab_n="Frequency",
+                        ) %>%
+                        fmt_percent(
+                                columns = pct,
+                                decimals = 1
+                        )|>
+                        cols_align(
+                                align = c( "center"),
+                                columns = c(pct,N,n,lab_n)
+                        )|>
+                        gt_plt_bar(n, fill = colors[1],color =colors[1] )%>%
+                        gt_color_rows(pct, palette = c("white", colors[1])) |>
+                        cols_width(name~px(60))%>%
+                        tab_options(heading.title.font.size = px(24)) |>
+                        tab_source_note(md("Source: *WHO*"))|>gt_theme_pff()
+
+```
+
+### Row {height="50%"}
+
+```{r}
+#| title: Type of lesions
+
+lesions_data|>
+                        dplyr::filter(n>0)|> # to only keep if present
+                        gt()|>
+                        # gt_merge_stack(col1 = location, col2 = groups) %>%
+                        cols_label(name = "Variable",
+                                   N = "Sample size",
+                                   n = "Prevalence",
+                                   lab_n="Frequency",
+                        ) %>%
+                        fmt_percent(
+                                columns = pct,
+                                decimals = 1
+                        )|>
+                        cols_align(
+                                align = c( "center"),
+                                columns = c(pct,N,n,lab_n)
+                        )|>
+                        gt_plt_bar(n, fill = colors[1],color =colors[1] )%>%
+                        gt_color_rows(pct, palette = c("white", colors[1])) |>
+                        cols_width(name~px(60))%>%
+                        tab_options(heading.title.font.size = px(24)) |>
+                        tab_source_note(md("Source: *WHO*"))|>gt_theme_pff()
+
+```
+
+# Symptoms
+
+## Row {height="50%"}
+
+### Column {width="80%"}
+
+```{r}
+#| title: Reported symptoms
+
+admi_df<- mpox_data |>
+                        dplyr::select("admpar",symptoms_list)|>sjlabelled::label_to_colnames()|>
+                        unlabel()|>pivot_longer(
+                                cols = -c(`Participant ID`),
+                                names_to = "name",
+                                values_to = "value"
+                        )|>
+                        dplyr::mutate(value_num=to_yn_char2num(value))|>
+                        dplyr::filter(!is.na(value))|>
+                        dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+                        dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+                        dplyr::summarise(
+                                N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+                                n = sum(str_count("Yes",prev)),
+                                pct = n / N,
+                                .by = c(name)
+                        ) |>
+                        dplyr::mutate(
+                                lab_pct = str_c(round(pct * 100), "%"),
+                                lab_n = str_c(n, " / ", N)
+                        ) |>
+                        dplyr::select(-lab_pct)|>
+                        dplyr::mutate(name=gsub("_"," ",name))|>
+                        dplyr::mutate(time="admission")|>
+                        dplyr::mutate(name=case_when(name=="Sorethroat"~"Sore throat",
+                                                     name=="Decreased urine output"~"Decreased urine",
+                                                     name=="Muscle ache"~"Muscle aches",
+                                                     name=="Psychological disturbance"~"Psychologic disturbance",
+                                                     name=="Pain swallowing"~"Swallowing pain",
+                                                     name=="Pain urination"~"Urination pain",
+                                                     .default = name))
+                
+                
+
+dis_df<-  mpox_data |>
+  dplyr::select("admpar",discharge_symptoms)|>sjlabelled::label_to_colnames()|>
+  unlabel()|>pivot_longer(
+    cols = -c(`Participant ID`),
+    names_to = "name",
+    values_to = "value"
+  )|>
+  dplyr::mutate(value_num=to_yn_char2num(value))|>
+  dplyr::filter(!is.na(value))|>
+  dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+  dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+  dplyr::summarise(
+    N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+    n = sum(str_count("Yes",prev)),
+    pct = n / N,
+    .by = c(name)
+  ) |>
+  dplyr::mutate(
+    lab_pct = str_c(round(pct * 100), "%"),
+    lab_n = str_c(n, " / ", N)
+  ) |>
+  dplyr::select(-lab_pct)|>
+  dplyr::mutate(name=gsub("dis_symp_","",name))|>
+  dplyr::mutate(name=gsub("_"," ",name))|>
+  dplyr::mutate(time="discharge")
+
+
+
+combined_df<- rbind(admi_df,dis_df)
+
+
+combined_df|>dplyr::mutate(pct=100*pct)|>
+  dplyr::select(time,name,pct)|>spread(time,pct)|>
+  dplyr::filter(!name%in%c("Inguinal","Cervical","Axillary"))|>
+  ungroup()|>
+  dplyr::mutate(admission=-admission)|>
+  # group_by(`Sex at birth`)|>
+  e_chart(name)|>
+  e_bar(admission,stack = "grp", color = "#1f77b4")|>
+  e_bar(discharge,stack = "grp",color = "#e377c2")|>
+  
+  e_flip_coords()|>
+  e_y_axis(nameLocation = 'middle',position="left",
+           nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 65
+           # name = "Age groups"#, max = max_cases
+  ) %>%
+  # Tooltip to show absolute percentage values
+  # Tooltip to show absolute percentage values
+  e_tooltip(
+    trigger = "item", 
+    backgroundColor = "rgba(255,255,255,0.7)",
+      formatter = e_tooltip_item_formatter("decimal",digits=0)
+    # formatter = htmlwidgets::JS("
+    #   function(params) {
+    #     var tooltipText = '';
+    #     params.forEach(function(item) {
+    #       tooltipText += item.marker + item.seriesName + ': ' + Math.abs(item.value[100]) + '%<br/>';
+    #     });
+    #     return tooltipText;
+    #   }
+    # ")
+  ) |>
+  
+  e_x_axis(
+    nameLocation = 'middle',
+    nameTextStyle = list(fontWeight = 'bold', fontSize = 16),
+    nameGap = 25,
+    name = "Percentage of cases",
+    axisLabel = list(
+      show = TRUE, 
+      formatter = htmlwidgets::JS('function(value) { return Math.abs(value) + "%"; }')
+    )
+  ) |>
+  
+  # e_title("Age and sex\ndistribution")|>
+  e_grid(left = "20%", bottom = "90",top="80",right="10%")|>
+  e_toolbox_feature(feature = c("saveAsImage"))
+
+```
+
+## Row {height="50%"}
+
+### Column {width="50%"}
+
+```{r}
+#| title: Symptoms at admission
+
+tab_admin<-  mpox_data |>
+  dplyr::select("admpar",symptoms_list)|>sjlabelled::label_to_colnames()|>
+  unlabel()|>pivot_longer(
+    cols = -c(`Participant ID`),
+    names_to = "name",
+    values_to = "value"
+  )|>
+  dplyr::mutate(value_num=to_yn_char2num(value))|>
+  dplyr::filter(!is.na(value))|>
+  dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+  dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+  dplyr::summarise(
+    N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+    n = sum(str_count("Yes",prev)),
+    pct = n / N,
+    .by = c(name)
+  ) |>
+  dplyr::mutate(
+    lab_pct = str_c(round(pct * 100), "%"),
+    lab_n = str_c(n, " / ", N)
+  ) |>
+  dplyr::select(-lab_pct)|>
+  dplyr::filter(n>0)|>
+  dplyr::filter(!name%in%c("Inguinal","Cervical","Axillary"))|>
+  dplyr::mutate(name=gsub("_"," ",name))|>
+  dplyr::mutate(name=case_when(name=="Sorethroat"~"Sore throat",
+                               name=="Decreased urine output"~"Decreased urine",
+                               name=="Muscle ache"~"Muscle aches",
+                               name=="Psychological disturbance"~"Psychologic disturbance",
+                               name=="Pain swallowing"~"Swallowing pain",
+                               name=="Pain urination"~"Urination pain",
+                               .default = name))|>
+  dplyr::arrange(name)|>
+  gt()|>
+  # gt_merge_stack(col1 = location, col2 = groups) %>%
+  cols_label(name = "Variable",
+             N = "Sample size",
+             n = "Prevalence",
+             lab_n="Frequency",
+  ) %>%
+  fmt_percent(
+    columns = pct,
+    decimals = 1
+  )|>
+  cols_align(
+    align = c( "center"),
+    columns = c(pct,N,n,lab_n)
+  )|>
+  gt_plt_bar(n, fill = colors[1],color =colors[1] )%>%
+  gt_color_rows(pct, palette = c("white", colors[1])) |>
+  cols_width(name~px(60))%>%
+  tab_options(heading.title.font.size = px(24)) %>%
+  tab_source_note(md("Source: *WHO*"))
+
+
+tab_admin|>gt_theme_pff()
+```
+
+### Column {width="50%"}
+
+```{r}
+#| title: Symptoms at discharge
+
+tab_discharge<-  mpox_data |>
+  dplyr::select("admpar",discharge_symptoms)|>sjlabelled::label_to_colnames()|>
+  unlabel()|>pivot_longer(
+    cols = -c(`Participant ID`),
+    names_to = "name",
+    values_to = "value"
+  )|>
+  dplyr::mutate(value_num=to_yn_char2num(value))|>
+  dplyr::filter(!is.na(value))|>
+  dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+  dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+  dplyr::summarise(
+    N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+    n = sum(str_count("Yes",prev)),
+    pct = n / N,
+    .by = c(name)
+  ) |>
+  dplyr::mutate(
+    lab_pct = str_c(round(pct * 100), "%"),
+    lab_n = str_c(n, " / ", N)
+  ) |>
+  dplyr::select(-lab_pct)|>
+  dplyr::mutate(name=gsub("dis_symp_","",name))|>
+  dplyr::mutate(name=gsub("_"," ",name))|>
+  dplyr::filter(n>0)|>
+  dplyr::filter(!name%in%c("Inguinal","Cervical","Axillary"))|>
+  dplyr::arrange(name)|>
+  gt()|>
+  # gt_merge_stack(col1 = location, col2 = groups) %>%
+  cols_label(name = "Variable",
+             N = "Sample size",
+             n = "Prevalence",
+             lab_n="Frequency",
+  ) %>%
+  fmt_percent(
+    columns = pct,
+    decimals = 1
+  )|>
+  cols_align(
+    align = c( "center"),
+    columns = c(pct,N,n,lab_n)
+  )|>
+  gt_plt_bar(n, fill = colors[3],color =colors[3] )%>%
+  gt_color_rows(pct, palette = c("white", colors[3])) |>
+  cols_width(name~px(60))%>%
+  tab_options(heading.title.font.size = px(24)) %>%
+  tab_source_note(md("Source: *WHO*"))
+
+
+tab_discharge|>gt_theme_pff()
+```
+
+# HIV status
+
+## Row {height="50%"}
+
+```{r}
+#| title: Population characteristics by HIV status
+
+data_redcap|>
+                        age_fun()|>
+                        sjlabelled::label_to_colnames()|>
+                        dplyr::select(hiv_status,Age,adm02.factor,adm40.factor, 
+                                      adm04.factor)|>
+                        dplyr::rename(`Sex at birth`=adm02.factor,
+                                      `Health care worker?`=adm04.factor,
+                                      `HIV (Human Immunodeficiency Virus)`=adm40.factor)|>
+                        gtsummary::tbl_summary( by = `hiv_status`,
+                                                include = c( Age,`Sex at birth`,`Health care worker?`, 
+                                                             # `Known current sexually transmitted infection`,
+                                                             # `Pre exposure prophylaxy`, 
+                                                             # `Sexual behavior`,
+                                                             # `Multiple partners during 21 days before symptom onset`, 
+                                                             # `Estimated number of sexual partners in the last 21 days`, 
+                                                             # `Probable mode of transmission`,
+                                                             `HIV (Human Immunodeficiency Virus)`),
+                                                type = list(c( `Sex at birth`,
+                                                               `Health care worker?`, 
+                                                               # `Known current sexually transmitted infection`,
+                                                               # `Pre exposure prophylaxy`, 
+                                                               # `Sexual behavior`, 
+                                                               # `Multiple partners during 21 days before symptom onset`, 
+                                                               # `Estimated number of sexual partners in the last 21 days`, 
+                                                               # `Probable mode of transmission`,
+                                                               `HIV (Human Immunodeficiency Virus)`) ~ "categorical"),
+                                                # label = model_labs,
+                                                # percent = "col",
+                                                missing_text = "Missing/Unknown",
+                                                NULL)%>%
+                        gtsummary::add_stat_label() %>%
+                        gtsummary::bold_labels() %>%
+                        gtsummary::modify_header(list(label ~ "**Variable**")) %>%
+                        gtsummary::as_gt()%>%
+                        gt::tab_options(
+                                row_group.background.color = "#4f7380",
+                                column_labels.font.weight = "bold",
+                                column_labels.background.color = "#E9F2F8",
+                                column_labels.hidden =F,
+                                row_group.padding=10,
+                                row_group.font.weight = "bold",
+                                heading.background.color = "#358CBF",
+                                heading.border.bottom.color = "#358CBF",
+                                heading.border.bottom.width = "5px",
+                                heading.border.lr.color = "#358CBF",
+                        ) %>%
+                        opt_table_font(font =  "sans")|>
+                        
+                        # gt::tab_header(title = paste0("Population characteristics by HIV status"))|>
+                        # gt::tab_footnote(
+                        #         footnote = glue::glue("As of {format(as_of_date, '%d %b %Y')}"),
+                        #         locations = cells_title()
+                        # ) |>
+                        tab_style(
+                                style = list(
+                                        cell_fill(color = "#E9F2F8"),
+                                        cell_text(style = "italic")
+                                ),
+                                locations = cells_footnotes()
+                        )|>gt_theme_pff()
+
+```
+
+## Row {height="80%"}
+
+### Column {width="50%"}
+
+```{r}
+#| title: Lesions by HIV status
+
+
+
+mirror_lesions_data|>
+  dplyr::filter(HIV%in%c("Positive","Negative"))|>
+  dplyr::filter(n>0)|>
+  group_by(HIV)|>
+  e_chart(name)|>
+  e_bar(pct, #stack = "groups",
+        bind = lab_n,
+        label = list(
+          show = TRUE,
+          formatter = "{b}",
+          position = "outside"
+        )
+  ) |>
+  e_flip_coords()|>
+  # e_y_axis(name="Count",nameLocation = 'middle',
+  #          nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 45)|>
+  e_x_axis(name="Percent",position="bottom",nameLocation = 'middle',
+           nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 45,
+           axisLabel = list(show = TRUE, formatter = e_axis_formatter("percent", digits = 1))) |>
+  e_tooltip(trigger = "item", backgroundColor = "rgba(255,255,255,0.7)")|>
+  e_theme_custom('{"color":["#b9257a","#448c8a"]}') |>
+  # e_title("Weekly cases")|>
+  e_grid(left = "20%", bottom = "90",top="80",right="10%")|>
+  e_toolbox_feature(feature = c("saveAsImage"))
+   
+```
+
+### Column {width="50%"}
+
+```{r}
+#| title: Complications by HIV status
+
+
+
+mirror_comp_data|>
+  dplyr::filter(HIV%in%c("Positive","Negative"))|>
+  dplyr::filter(n>0)|>
+  group_by(HIV)|>
+  e_chart(name#, height = "800"
+  )|>
+  e_bar(pct, 
+        bind = lab_n,
+        label = list(
+          show = TRUE,
+          formatter = "{b}",
+          position = "outside"
+        )
+  ) |>
+  e_flip_coords()|>
+  # e_y_axis(name="Count",nameLocation = 'middle',
+  #          nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 45)|>
+  e_x_axis(name="Percent",position="bottom",nameLocation = 'middle',
+           nameTextStyle = list(fontWeight = 'bold',fontSize = 16),nameGap = 45,
+           axisLabel = list(show = TRUE, formatter = e_axis_formatter("percent", digits = 1))) |>
+  e_tooltip(trigger = "item", backgroundColor = "rgba(255,255,255,0.7)")|>
+  e_theme_custom('{"color":["#b9257a","#448c8a"]}') |>
+  # e_title("Weekly cases")|>
+  e_grid(left = "20%", bottom = "90",top="80",right="10%")|>
+  e_toolbox_feature(feature = c("saveAsImage"))
+
+
+```

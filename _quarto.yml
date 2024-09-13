@@ -1,0 +1,17 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "WHO Mpox Clinical Data Platform"
+  navbar:
+    left:
+      - href: mpox_who_dashboard.qmd
+        text: " "
+
+html:
+  theme: [sandstone, custom.scss]
+  css: custom.scss
+  toc: true
+
+editor: visual
