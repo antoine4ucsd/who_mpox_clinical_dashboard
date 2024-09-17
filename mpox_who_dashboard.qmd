@@ -6,7 +6,6 @@ format:
       - icon: globe
         href: https://www.who.int/tools/global-clinical-platform/monkeypox
 logo: images/my_logo_white.png
-theme: [sandstone, theme/custom.scss]
 fig-width: 10
 fig-asp: 0.3
 ---
@@ -524,6 +523,31 @@ tab_comp|>gt_theme_pff()
 #| title: Body map
 
 
+lesions_type <- mpox_data |>
+                        dplyr::select("admpar",lesion_type)|>#dplyr::select(-number_lesion)|>
+                        sjlabelled::label_to_colnames()|>
+                        unlabel()|>pivot_longer(
+                                cols = -c(`Participant ID`),
+                                names_to = "name",
+                                values_to = "value"
+                        )|>
+                        dplyr::mutate(value_num=to_yn_char2num(value))|>
+                        dplyr::filter(!is.na(value))|>
+                        dplyr::summarise(n=sum(value_num,na.rm=T),.by=c(`Participant ID`,name))|>
+                        dplyr::mutate(prev=ifelse(n>0,"Yes","No"),.by=c(name))|>
+                        dplyr::summarise(
+                                N = n_distinct(`Participant ID`),#sum(!is.na(prev)),
+                                n = sum(str_count("Yes",prev)),
+                                pct = n / N,
+                                .by = c(name)
+                        )|>
+                        dplyr::mutate(
+                                lab_pct = str_c(round(pct * 100), "%"),
+                                lab_n = str_c(n, "/", N)
+                        ) |>
+                        dplyr::mutate(name=gsub("_lesion","",name))|>
+                        
+                        dplyr::select(-lab_pct)
 lesions_data <- mpox_data |>
                         dplyr::select("admpar",lesion_list)|>dplyr::select(-number_lesion)|>
                         sjlabelled::label_to_colnames()|>
@@ -618,7 +642,7 @@ lesions_data |>
 ```{r}
 #| title: Type of lesions
 
-lesions_data|>
+lesions_type|>
                         dplyr::filter(n>0)|> # to only keep if present
                         gt()|>
                         # gt_merge_stack(col1 = location, col2 = groups) %>%

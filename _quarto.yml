@@ -9,9 +9,9 @@ website:
       - href: mpox_who_dashboard.qmd
         text: " "
 
-html:
-  theme: [sandstone, custom.scss]
-  css: custom.scss
-  toc: true
+format:
+  html:
+    theme: [flatly,theme/custom2.css]
+    css: theme/custom2.css
+    toc: true
 
-editor: visual
